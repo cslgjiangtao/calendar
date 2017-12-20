@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>日历组件示例</title>
+    <style type="text/css">
+        body,* {margin: 0;padding: 0; font-family: arial;}
+        .wraper {width: 1120px; margin: 50px auto 0;moz-user-select: -moz-none;-moz-user-select: none;-o-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;}
+        #data {width: 100%;margin-top: 20px;}
+        #data:after {display: block;content: "";clear: both;}
+        #show {width: 100px; display: inline-block; text-align: center;}
+        .prev,.next {padding: 4px 6px; font-size: 12px; background: #7ed321; color: #fff; border-radius: 4px; cursor: pointer;}
+        .dd { float: left; width: 30px; margin: 0 1px; font-size: 12px; text-align: center; border: 2px solid #ffffff; border-radius: 3px; cursor: pointer;}
+        .dd.in {border: 2px solid #7ed321;}
+        .dd.on {border: 2px solid #7ed321;}
+        .day {line-height: 15px;    } 
+        .week {font-size: 12px; line-height: 15px;}
+    </style>
+</head>
+<body>
+<div class="wraper">
+    <a id="show"></a>
+    <a class="prev">上个月</a>
+    <a class="next">下个月</a>
+    <div id="data"></div>
+    <div class="result" style="margin-top: 40px; font-size: 30px;"></div>
+</div>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="calender.js"></script>
+<script>
+    var myDate = new Calender({
+        id:'data',
+        clickLink: function(value){
+            console.log(value);//点击获取日期时间
+            $(".result").html(value);
+        }
+    });
+    //点击上个月
+    $(".prev").click(function(){
+        myDate.bindPrevMonth();
+    });
+    //点击下个月
+    $(".next").click(function(){
+        myDate.bindNextMonth();
+    });
+</script>
+</body>
+</html>
